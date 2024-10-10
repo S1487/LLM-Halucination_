@@ -18,7 +18,8 @@ __Evaluation code:__
    - Specify the evaluated task (qa, dialogue or summarization)
 2. Choose one of the models to run evaluation on:
 <img width="584" alt="Screenshot 2024-10-10 at 10 37 41 PM" src="https://github.com/user-attachments/assets/1d5a667e-4306-454b-b450-12f0c5079caa">
- ```
+
+```
    cd LLM-Halucination_
    python evaluate.py –-task qa --model Llama2
 ```
