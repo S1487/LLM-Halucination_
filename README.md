@@ -15,13 +15,22 @@ __Model from github:__
 __Evaluation code:__
 
 1. Move into the evaluation directory and run the evaluation code:
-   - “cd LLM-Halucination_”
-```
-   python evaluate.py –task qa 
-```
-   - (Specify qa, dialogue or summarization)
+   - Specify the evaluated task (qa, dialogue or summarization)
 2. Choose one of the models to run evaluation on:
+Model Command parameter
+   - Llama-2-7b-chat: “Llama2”
+   - Llama-2-7b-chat - Q4: “Q4-Llama2”
+   - Llama-2-7b-chat - Q8: “Q8-Llama2”
+   - Llama-2-7b-chat - Q4_QLORA: “Q4-Llama2-QLORA”
+   - Llama-2-7b-chat - Q8_QLORA: “Q8-Llama2-QLORA”
+   - Llama-2-7b-chat - Q4_QLORA_low_dropout: “Q4-Llama2-QLORA_low_dropout”
+   - ChatGLM-6B: “ChatGLM”
+   - Falcon-7B: “Falcon”
 
+ ```
+   cd LLM-Halucination_
+   python evaluate.py –-task qa --model Llama2
+```
 
 <img width="584" alt="Screenshot 2024-10-10 at 10 37 41 PM" src="https://github.com/user-attachments/assets/1d5a667e-4306-454b-b450-12f0c5079caa">
 
