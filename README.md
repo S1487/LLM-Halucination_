@@ -20,8 +20,8 @@ __Model from github:__
 git clone https://github.com/S1487/LLM-Halucination_.git
 ```
 3. Run the “requirements.txt” file to install necessary dependencies.
-4. Using the meta-llama2 model requires access through HuggingFace.Request access using https://huggingface.co/meta-llama/Llama-2-7b-chat-hf, and create an access token that can be used to login from the Google Cloud Instance.
-5. Use “huggingface-cli login”, enter your huggingface access token created earlier to gain access to the models from the virtual machine. This only needs to be done once.
+4. Using the meta-llama2 model requires access through HuggingFace. Request access using https://huggingface.co/meta-llama/Llama-2-7b-chat-hf, and create an access token that can be used to login from the Google Cloud Instance.
+5. Use “huggingface-cli login”, and enter your huggingface access token created earlier to gain access to the models from the virtual machine. This only needs to be done once.
 
    
 __Evaluation code:__
