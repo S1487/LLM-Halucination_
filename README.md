@@ -15,8 +15,11 @@ __Model from github:__
 __Evaluation code:__
 
 1. Move into the evaluation directory and run the evaluation code:
- a. “cd LLM-Halucination_”
- b. “python evaluate.py –task qa” (Specify qa, dialogue or summarization)
+   - “cd LLM-Halucination_”
+```
+   python evaluate.py –task qa 
+```
+   - (Specify qa, dialogue or summarization)
 2. Choose one of the models to run evaluation on:
 
 Model
