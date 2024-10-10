@@ -2,7 +2,7 @@ import random
 import time
 import json
 import argparse
-from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline,BitsAndBytesConfig
+from transformers import AutoModelForCausalLM,AutoModel, AutoTokenizer, pipeline,BitsAndBytesConfig
 import torch
 from peft import PeftModel
 from peft import get_peft_model
@@ -13,7 +13,7 @@ if torch.cuda.is_available():
 else:
     print("GPU is not available, using CPU.")
 
-mod_req = input("What Model")
+mod_req = input("Model: ")
 if  mod_req =="Llama2":
     model_name = "meta-llama/Llama-2-7b-chat-hf"
     model = AutoModelForCausalLM.from_pretrained(model_name,
@@ -118,10 +118,33 @@ elif mod_req =="Q4-Llama2-QLORA_low_dropout":
     # Load the LoRA adapter configuration
     peft_config = PeftConfig.from_pretrained(adapter_name)
 
-pipe = pipeline('text-generation', model=model, tokenizer=tokenizer)
+elif  mod_req =="ChatGLM":
+    model_name = "THUDM/chatglm-6b"
+    model = AutoModel.from_pretrained(model_name,
+                                      device_map="cuda",
+                                      trust_remote_code=True).half().cuda()
+    
+    tokenizer = AutoTokenizer.from_pretrained("THUDM/chatglm-6b", trust_remote_code=True)
+
+elif mod_req =="Falcon":
+    model_name = "tiiuae/falcon-7b"
+    model = AutoModelForCausalLM.from_pretrained(model_name,
+                                              device_map="cuda",
+                                              torch_dtype=torch.bfloat16,
+                                              trust_remote_code=True)
+    tokenizer = AutoTokenizer.from_pretrained("tiiuae/falcon-7b")
+    
+    
+if mod_req == "ChatGLM":
+    pipe = pipeline('text2text-generation', model=model, tokenizer=tokenizer)
+else:
+    pipe = pipeline('text-generation', model=model, tokenizer=tokenizer)
+    
+    
+    
 def get_qa_response(model, question, answer, instruction):
     message = [
-        {"role": "system", "content":"You are a huallucination detector. You MUST determine if the provided answer contains hallucination or not for the question based on the world knowledge. The answer you provided MUST be \"Yes\" or \"No\""},
+        {"role": "system", "content":"You are a hallucination detector. You MUST determine if the provided answer contains hallucination or not for the question based on the world knowledge. The answer you provided MUST be \"Yes\" or \"No\""},
         {"role": "user", "content": instruction +
                                     "\n\n#Question#: " + question +
                                     "\n#Answer#: " + answer +
