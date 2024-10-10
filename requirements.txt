@@ -1,0 +1,13 @@
+transformers==4.33.2
+huggingface_hub
+torch
+torchvision
+torchaudio
+peft
+bitsandbytes
+nltk
+gensim
+spacy
+sentencepiece
+
+-f https://download.pytorch.org/whl/cu118
