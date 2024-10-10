@@ -143,17 +143,11 @@ else:
     
     
 def get_qa_response(model, question, answer, instruction):
-    message = [
-        {"role": "system", "content":"You are a hallucination detector. You MUST determine if the provided answer contains hallucination or not for the question based on the world knowledge. The answer you provided MUST be \"Yes\" or \"No\""},
-        {"role": "user", "content": instruction +
-                                    "\n\n#Question#: " + question +
-                                    "\n#Answer#: " + answer +
-                                    "\n#Your Judgement#: "} 
-    ]
+
     prompt = instruction + "\n\n#Question#: " + question + "\n#Answer#: " + answer + "\n#Your Judgement#:"
     while True:
         try:
-            res = pipe(prompt,max_new_tokens=5)
+            res = pipe(prompt,max_new_tokens=2)
             response = res[0]['generated_text'].strip()
             response = response.split("#Your Judgement#:")[-1].strip()
             break
@@ -165,17 +159,11 @@ def get_qa_response(model, question, answer, instruction):
 
 
 def get_dialogue_response(model, dialog, response, instruction):
-    message = [
-        {"role": "system", "content": "You are a response judge. You MUST determine if the provided response contains non-factual or hallucinated information. The answer you give MUST be \"Yes\" or \"No\""},
-        {"role": "user", "content": instruction +
-                                    "\n\n#Dialogue History#: " + dialog +
-                                    "\n#Response#: " + response +
-                                    "\n#Your Judgement#: "}
-    ]
+
     prompt = instruction + "\n\n#Dialogue History#: " + dialog + "\n#Response#: " + response + "\n#Your Judgement#:"
     while True:
         try:
-            res = pipe(prompt,max_new_tokens=5)
+            res = pipe(prompt,max_new_tokens=2)
             response = res[0]['generated_text'].strip()
             response = response.split("#Your Judgement#:")[-1].strip()
             break
@@ -203,22 +191,16 @@ def truncate_message(prompt1, prompt2, model):
 
 
 def get_summarization_response(model, document, summary, instruction):
-    message = [
-        {"role": "system", "content": "You are a summary judge. You MUST determine if the provided summary contains non-factual or hallucinated information. The answer you give MUST be \"Yes\" or \"No\""},
-        {"role": "user", "content": instruction +
-                                    "\n\n#Document#: " + document +
-                                    "\n#Summary#: " + summary +
-                                    "\n#Your Judgement#: "}
-    ]
+
     prompt1 = instruction + "\n\n#Document#: " + document
     prompt2 = "\n#Summary#: " + summary + "\n#Your Judgement#:"
-    if model == "Llama-2-7b-chat":
-        prompt = truncate_message(prompt1, prompt2)
-    else:
+    if model_name == "meta-llama/Llama-2-7b-chat-hf":
         prompt = prompt1 + prompt2
+    else:
+        prompt = truncate_message(prompt1, prompt2)
     while True:
         try:
-            res = pipe(prompt,max_new_tokens=5)
+            res = pipe(prompt,max_new_tokens=2)
             response = res[0]['generated_text'].strip()
             response = response.split("#Your Judgement#:")[-1].strip()
             break
