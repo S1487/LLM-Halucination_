@@ -21,13 +21,21 @@ Evaluation code:
 
 Model
 Command parameter
+
 Llama-2-7b-chat: “Llama2”
+
 Llama-2-7b-chat - Q4: “Q4-Llama2”
+
 Llama-2-7b-chat - Q8: “Q8-Llama2”
+
 Llama-2-7b-chat - Q4_QLORA: “Q4-Llama2-QLORA”
+
 Llama-2-7b-chat - Q8_QLORA: “Q8-Llama2-QLORA”
+
 Llama-2-7b-chat - Q4_QLORA_low_dropout: “Q4-Llama2-QLORA_low_dropout”
+
 ChatGLM-6B: “ChatGLM”
+
 Falcon-7B: “Falcon”
 
  
