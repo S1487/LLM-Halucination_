@@ -20,8 +20,7 @@ if  mod_req =="Llama2":
                                                 device_map="cuda",
                                                 torch_dtype=torch.float16,
                                                 trust_remote_code=False,
-                                                revision="main",
-                                                offload_buffers=True)
+                                                revision="main")
     tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-7b-chat-hf")
 elif mod_req =="Q4-Llama2":
     quantization_config = BitsAndBytesConfig(
@@ -34,8 +33,7 @@ elif mod_req =="Q4-Llama2":
                                                 quantization_config=quantization_config,
                                                 trust_remote_code=False,
                                                 torch_dtype = torch.bfloat16,
-                                                revision="main",
-                                                offload_buffers=True)
+                                                revision="main")
     tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-7b-chat-hf")
 elif mod_req =="Q8-Llama2":
     quantization_config = BitsAndBytesConfig(
@@ -48,8 +46,7 @@ elif mod_req =="Q8-Llama2":
                                                 quantization_config=quantization_config,
                                                 trust_remote_code=False,
                                                 torch_dtype = torch.bfloat16,
-                                                revision="main",
-                                                offload_buffers=True)
+                                                revision="main")
     tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-7b-chat-hf")
 elif mod_req =="Q8-Llama2-QLORA":
     quantization_config = BitsAndBytesConfig(
@@ -62,8 +59,7 @@ elif mod_req =="Q8-Llama2-QLORA":
                                                 quantization_config=quantization_config,
                                                 trust_remote_code=False,
                                                 torch_dtype = torch.bfloat16,
-                                                revision="main",
-                                                offload_buffers=True)
+                                                revision="main")
 
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     
@@ -88,8 +84,7 @@ elif mod_req =="Q4-Llama2-QLORA":
                                                 quantization_config=quantization_config,
                                                 trust_remote_code=False,
                                                 torch_dtype = torch.bfloat16,
-                                                revision="main",
-                                                offload_buffers=True)
+                                                revision="main")
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     
     # Load the LoRA adapter from the Hugging Face Hub
@@ -109,8 +104,7 @@ elif mod_req =="Q4-Llama2-QLORA_low_dropout":
                                                 quantization_config=quantization_config,
                                                 trust_remote_code=False,
                                                 torch_dtype = torch.bfloat16,
-                                                revision="main",
-                                                offload_buffers=True)
+                                                revision="main")
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     
     # Load the LoRA adapter from the Hugging Face Hub
