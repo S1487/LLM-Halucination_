@@ -188,10 +188,10 @@ def get_summarization_response(model, document, summary, instruction):
 
     prompt1 = instruction + "\n\n#Document#: " + document
     prompt2 = "\n#Summary#: " + summary + "\n#Your Judgement#:"
-    if model_name == "meta-llama/Llama-2-7b-chat-hf":
-        prompt = prompt1 + prompt2
-    else:
+    if model == "Llama-2-7b-chat":
         prompt = truncate_message(prompt1, prompt2)
+    else:
+        prompt = prompt1 + prompt2
     while True:
         try:
             res = pipe(prompt,max_new_tokens=2)
