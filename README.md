@@ -1,6 +1,7 @@
 # Fine-Tuning Language Models to Reduce Model Hallucinations
 
-## Final year research project focusing on evaluating hallucinations in Large Language Models and analyzing the impact of fine-tuning for both in-domain and out-of-domain applications.
+This is the repo for our final year research project focusing on evaluating hallucinations in Large Language Models and analyzing the impact of fine-tuning for both in-domain and out-of-domain applications. This repository contains instructions and code for fine-tuning, evaluation and analysis of LLMs (LLama-2-7B, ChatGLM-6B, Falcon-7B).
+
 
 Steps for Reproduction
 
