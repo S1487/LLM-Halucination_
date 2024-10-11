@@ -140,7 +140,7 @@ def lda_model(docs, num_topics):
     pprint(top_topics)
 
     vis = gensim_models.prepare(model, corpus, dictionary)
-    pyLDAvis.show(vis, local=False)
+    pyLDAvis.save_html(vis, 'lda_visualization.html')
 
 
 if __name__ == '__main__':
