@@ -77,3 +77,27 @@ python analyze.py --task qa --result ../evaluation/qa/qa_Llama-2-7b-chat-hf_resu
 
 You can choose which task to run analysis on, and specify the path to the specific evaluation result files.
 The complete setup and execution can be run on a local machine, given that the appropriate hardware resources are available (At least 16GB of GPU RAM.)
+
+## Finetuning execution
+
+Now the analysis can now be executed:
+
+1. Navigate to the qlora-main directory:
+```
+cd scripts
+ls scripts
+```
+In the scripts folder you will find the input commands for the models evaluated in our testing. This script can be entered in upon the next step to recreate the LORA or QLORA adapter used.
+```
+cd ..
+python qlora.py 
+```
+2. Run the qlora.py code followed by the parameters included in the scripts folder:
+These following inputs will be taken from the scripts folder mentioned previously and the selected model that you wish to run.
+```
+3. Problem solving
+Depending on the resources used to train the model an issue encountered on Google Cloud was that the code would only execute while the session is open. In this case you may wish to run prefaced with nohup.
+```
+nohup python qlora.py *insert script*
+```
+4. Once complete the Fine tuned model will be saved in its own folder allong with any checkpoints saved.
